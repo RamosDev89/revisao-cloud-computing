@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // GitHub Pages SPA redirect trick
+      var seg = window.location.pathname
+        .replace('/revisao-cloud-computing', '')
+        .split('/')
+        .slice(1);
+      var query = seg.length ? '?p=/' + seg.join('/') : '';
+      window.location.replace(
+        '/revisao-cloud-computing/' + window.location.search + query
+      );
+    </script>
+  </head>
+</html>
