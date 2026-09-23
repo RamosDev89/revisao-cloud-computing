@@ -6,14 +6,19 @@ interface Props {
   extraLabel: string;
 }
 
+function scrollTo(anchor: string) {
+  const el = document.getElementById(anchor);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 export function TopicNav({ topics, extraAnchor, extraLabel }: Props) {
   return (
     <nav aria-label="Temas de revisão" className="py-4">
       <ol className="flex flex-wrap gap-2">
         {topics.map((t) => (
           <li key={t.id}>
-            <a
-              href={`#${t.anchor}`}
+            <button
+              onClick={() => scrollTo(t.anchor)}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-colors"
               style={{
                 background: 'var(--color-green-light)',
@@ -22,12 +27,12 @@ export function TopicNav({ topics, extraAnchor, extraLabel }: Props) {
             >
               <span className="tabular-nums opacity-60">{t.id}.</span>
               {t.topic}
-            </a>
+            </button>
           </li>
         ))}
         <li>
-          <a
-            href={`#${extraAnchor}`}
+          <button
+            onClick={() => scrollTo(extraAnchor)}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-colors"
             style={{
               background: 'var(--color-orange-light)',
@@ -35,7 +40,7 @@ export function TopicNav({ topics, extraAnchor, extraLabel }: Props) {
             }}
           >
             {extraLabel}
-          </a>
+          </button>
         </li>
       </ol>
     </nav>
