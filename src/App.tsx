@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { RevisionPage } from './pages/RevisionPage';
 
@@ -17,7 +17,7 @@ function Loader() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Layout>
         <Routes>
           <Route path="/" element={<RevisionPage />} />
@@ -31,6 +31,6 @@ export default function App() {
           />
         </Routes>
       </Layout>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
